@@ -22,7 +22,7 @@ def register(request):
                 user.set_password(form.cleaned_data['password'])
                 user.save()
                 login(request, user)
-                return redirect('survey_list')
+                return redirect('user_dashboard')
     else:
         form = RegisterForm()
     return render(request, 'register.html', {'form': form})
