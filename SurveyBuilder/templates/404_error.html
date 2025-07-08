@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Error</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="flex justify-center items-center h-screen flex-col">
+        <h1 class="text-9xl font-bold text-gray-800">404</h1>
+        <p class="text-3xl text-gray-600 mb-4">Oops! The page you're looking for doesn't exist.</p>
+        <a href="{% url 'user_dashboard' %}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Take Our Survey</a>
+        <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded mt-4" onclick="history.back()">Go Back</button>
+    </div>
+</body>
+</html>

@@ -1,24 +1,45 @@
-{% extends 'base.html' %} {% block content %} 
+{% extends 'base.html' %} 
+{% load custom_tags %} 
+{% block content %} 
 <div class="container mx-auto p-4 pt-6">
-    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="history.back()">Back</button>
-    <h1 class="text-3xl font-bold mb-4 text-center">Survey Responses</h1>
+    <div class="flex justify-between mb-4">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="history.back()">Back</button>
+        <h1 class="text-3xl font-bold text-center">Survey Responses</h1>
+        <div></div>
+    </div>
     <div class="overflow-x-auto shadow-md rounded-lg">
+        <form method="get" class="flex justify-between mb-4">
+            <div class="flex">
+                <label for="filter_question" class="mr-2">Filter by Question:</label>
+                <select id="filter_question" name="filter_question" class="px-4 py-2 border border-gray-400">
+                    <option value="">Select a question</option>
+                    {% for question in questions %}
+                        <option value="{{ question }}">{{ question }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="flex">
+                <label for="filter_answer" class="mr-2">Filter by Answer:</label>
+                <input type="text" id="filter_answer" name="filter_answer" class="px-4 py-2 border border-gray-400">
+            </div>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Filter</button>
+        </form>
         <table class="w-full table-auto border-collapse border border-gray-400">
             <thead class="bg-blue-500 text-white">
                 <tr>
-                    <th class="px-4 py-2 border border-gray-400">Survey Name</th>
-                    <th class="px-4 py-2 border border-gray-400">Question</th>
-                    <th class="px-4 py-2 border border-gray-400">Response</th>
+                    {% for question in questions %}
+                        <th class="px-4 py-2 border border-gray-400">{{ question }}</th>
+                    {% endfor %}
                 </tr>
             </thead>
             <tbody>
-                {% for response in responses %}
-                    <tr class="even:bg-gray-100 hover:bg-gray-200">
-                        <td class="px-4 py-2 border border-gray-400">{{ response.survey.name }}</td>
-                        <td class="px-4 py-2 border border-gray-400">{{ response.question.text }}</td>
-                        <td class="px-4 py-2 border border-gray-400">
-                            {{ response.formatted_answer }}
-                        </td>
+                {% for submission_responses in responses %}
+                    <tr class="{% cycle 'bg-gray-100' '' %}">
+                        {% for question in questions %}
+                            <td class="px-4 py-2 border border-gray-400">
+                                {{ submission_responses|get_item:question|default:"" }}
+                            </td>
+                        {% endfor %}
                     </tr>
                 {% endfor %}
             </tbody>

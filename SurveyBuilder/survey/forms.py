@@ -1,7 +1,13 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import Survey, Question, Option, Response
+from .models import Survey, Question, Option, SurveyResponse
 
+class ResponseForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        questions = kwargs.pop('questions')
+        super(ResponseForm, self).__init__(*args, **kwargs)
+        for question in questions:
+            self.fields[f'question_{question.pk}'] = forms.CharField(label=question.text)
 
 class RegisterForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
@@ -15,14 +21,12 @@ class RegisterForm(forms.ModelForm):
         cleaned_data = super().clean()
         password = cleaned_data.get('password')
         confirm_password = cleaned_data.get('confirm_password')
-
         if password and confirm_password and password != confirm_password:
             raise forms.ValidationError('Passwords do not match')
 
 class LoginForm(forms.Form):
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
-
 
 class SurveyForm(forms.ModelForm):
     class Meta:
@@ -50,9 +54,9 @@ class OptionForm(forms.ModelForm):
             'text': forms.TextInput(attrs={'class': 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'})
         }
 
-class ResponseForm(forms.ModelForm):
+class SurveyResponseForm(forms.ModelForm):
     class Meta:
-        model = Response
+        model = SurveyResponse
         fields = ['answer']
         widgets = {
             'answer': forms.TextInput(attrs={'class': 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'})
