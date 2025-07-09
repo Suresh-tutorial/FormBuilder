@@ -1,6 +1,7 @@
 # Survey Form Builder
 
 A powerful and flexible survey form builder that allows users to create and manage surveys with ease.
+![Survey App - Google Chrome 2025-07-09 09-38-33](https://github.com/user-attachments/assets/18bbace1-b3fc-4931-8843-21ba152fd20a)
 
 
 ## Table of content
@@ -55,6 +56,7 @@ A powerful and flexible survey form builder that allows users to create and mana
 ## Features
 #### Manage a Survey
 You must as superuser to manage survey. You can `create, edit, delete, search and show all available survey`. To manage survey you can access `http://localhost:8000/surveys/create/`.
+![Screenshot 2025-07-09 094239](https://github.com/user-attachments/assets/1c5a6e8c-226c-47ec-895b-ce3467947d41)
 
 
 #### Option Survey
@@ -67,6 +69,7 @@ You can use the options below
 
 #### Questioin Type
 Available field types include:
+![Screenshot 2025-07-09 094126](https://github.com/user-attachments/assets/4fcc5949-1499-4c85-bab2-41f5474e8ed3)
 
 - Text 
 - Number
@@ -75,10 +78,10 @@ Available field types include:
 
 ## For Contributor
 ### Required Tools
-- Python 3.13.3
-- django  5.2.3
-- clone project
-- symlink app to `FormBuilder`
+    - Python 3.13.3
+    - django  5.2.3
+  - clone project
+ - symlink app to `FormBuilder`
 
 - create `env` development
 - active `env`
