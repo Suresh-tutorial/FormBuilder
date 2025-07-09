@@ -1,7 +1,7 @@
 # Survey Form Builder
 
 A powerful and flexible survey form builder that allows users to create and manage surveys with ease.
-![image]()
+![image](FormBuilder\media\Survey App - Google Chrome 2025-07-09 09-38-33.mp4)
 
 ## Table of content
 - [Installation](#installation)
@@ -55,7 +55,7 @@ A powerful and flexible survey form builder that allows users to create and mana
 ## Features
 #### Manage a Survey
 You must as superuser to manage survey. You can `create, edit, delete, search and show all available survey`. To manage survey you can access `http://localhost:8000/surveys/create/`.
-      ![image]()
+      ![image](C:\Users\LOKESH\Desktop\Form_Builder\FormBuilder\media\Screenshot 2025-07-09 094126.png)
 
 #### Option Survey
 You can use the options below
@@ -67,7 +67,7 @@ You can use the options below
 
 #### Questioin Type
 Available field types include:
-![image](https://user-images.githubusercontent.com/11069520/237864026-9f933369-4cf0-4292-a394-ac398eb1be9b.png)
+![image](C:\Users\LOKESH\Desktop\Form_Builder\FormBuilder\media\Screenshot 2025-07-09 094239.png)
 - Text 
 - Number
 - Options
