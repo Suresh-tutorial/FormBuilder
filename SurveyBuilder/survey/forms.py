@@ -2,12 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from .models import Survey, Question, Option, SurveyResponse
 
-class ResponseForm(forms.Form):
-    def __init__(self, *args, **kwargs):
-        questions = kwargs.pop('questions')
-        super(ResponseForm, self).__init__(*args, **kwargs)
-        for question in questions:
-            self.fields[f'question_{question.pk}'] = forms.CharField(label=question.text)
+
 
 class RegisterForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)

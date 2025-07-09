@@ -36,8 +36,6 @@ class SurveySubmission(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     submitted_at = models.DateTimeField(auto_now_add=True)
 
-
-
 class SurveyResponse(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     submission = models.ForeignKey(SurveySubmission, on_delete=models.CASCADE, related_name='responses')

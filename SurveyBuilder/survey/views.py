@@ -51,15 +51,6 @@ def user_dashboard(request):
     surveys = Survey.objects.filter(user=user)
     return render(request, 'user_dashboard.html', {'surveys': surveys})
 
-
-def home(request):
-    return render(request,'Home.html')
-
-@login_required
-def survey_list(request):
-    surveys = Survey.objects.all()
-    return render(request, 'survey_list.html', {'survey': surveys})
-
 @login_required
 def create_survey(request):
     if request.method == 'POST':
